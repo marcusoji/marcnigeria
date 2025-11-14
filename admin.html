@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin Panel - Marc Nigeria">
+    <title>Admin Panel | Marc Nigeria</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- Header -->
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-globe-africa"></i>
+                    <h1>Marc Nigeria Admin</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Back to Site</a></li>
+                    <li><a href="places.html">View Destinations</a></li>
+                </ul>
+                <button class="btn" id="logout-btn">Logout</button>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- Login Section -->
+    <section class="admin-login" id="login-section">
+        <div class="container">
+            <h2>Admin Login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="admin-pin">Admin PIN</label>
+                    <input type="password" id="admin-pin" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%">Login</button>
+            </form>
+        
+        </div>
+
+    </section>
+
+    <!-- Admin Panel -->
+    <section class="admin-panel" id="admin-panel" style="display: none;">
+        <div class="container">
+            <div class="admin-header">
+                <h2>Destinations Management</h2>
+                <button class="btn" id="add-destination-btn">Add New Destination</button>
+            </div>
+
+            <div class="admin-actions">
+                <button class="btn btn-outline" id="export-btn">Export JSON</button>
+                <button class="btn btn-outline" id="import-btn">Import JSON</button>
+                <input type="file" id="import-file" accept=".json" style="display: none;">
+            </div>
+
+
+            <div class="table-responsive">
+                <table class="destinations-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>Category</th>
+                            <th>Featured</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="destinations-table-body">
+                        <!-- Destinations loaded by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Add/Edit Destination Modal -->
+    <div class="modal" id="destination-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-destination-modal">&times;</span>
+            <h2 id="modal-title">Add New Destination</h2>
+            <form id="destination-form">
+                <input type="hidden" id="destination-id">
+                
+                <div class="form-group">
+                    <label for="destination-name">Destination Name *</label>
+                    <input type="text" id="destination-name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="destination-
+
+location">Location (State) *</label>
+                    <input type="text" id="destination-location" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="destination-region">Region *</label>
+                    <select id="destination-region" required>
+                        <option value="">Select Region</option>
+                        <option value="South West">South West</option>
+                        <option value="South East">South East</option>
+                        <option value="South South">South South</option>
+                        <option value="North West">North West</option>
+                        <option value="North East">North East</option>
+
+                        <option value="North Central">North Central</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="destination-category">Category *</label>
+                    <select id="destination-category" required>
+                        <option value="">Select Category</option>
+                        <option value="Beach">Beach</option>
+                        <option value="Mountain">Mountain</option>
+                        <option value="Waterfall">Waterfall</option>
+                        <option value="Wildlife Reserve">Wildlife Reserve</option>
+                        <option value="Historical Site">Historical Site</option>
+
+                        <option value="Cultural Center">Cultural Center</option>
+                        <option value="National Park">National Park</option>
+                        <option value="Lake">Lake</option>
+                        <option value="Forest Reserve">Forest Reserve</option>
+                        <option value="City Attraction">City Attraction</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="destination-image">Image URL *</label>
+                    <input type="url" id="destination-image" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="destination-
+
+description">Description *</label>
+                    <textarea id="destination-description" rows="4" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="destination-featured">
+                        <input type="checkbox" id="destination-featured">
+                        Featured Destination
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label for="destination-best-time">Best Time to Visit</label>
+                    <input type="text" id="destination-best-time" placeholder="e.g., November - March">
+                </div>
+                
+
+                <div class="form-group">
+                    <label for="destination-highlights">Highlights (comma separated)</label>
+                    <input type="text" id="destination-highlights" placeholder="e.g., Hiking, Photography, Wildlife">
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%">Save Destination</button>
+            </form>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="index.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
